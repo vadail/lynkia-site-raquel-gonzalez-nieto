@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nelqia · Atelier de bordado personalizado</title>
+<meta name="description" content="Nelqia es un atelier de bordado personalizado: piezas para bebé, bolsos y detalles de boda bordados a mano y a máquina, con envíos a toda España.">
+<script>document.documentElement.className+=' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>/* ============ NELQIA · atelier de bordado ============ */
+:root{
+  --bg:#f7f2e8;
+  --surface:#fdfaf2;
+  --text:#2d3226;
+  --muted:#6a6e5b;
+  --line:#ddd4bf;
+  --accent:#6e8453;
+  --accent-rgb:110,132,83;
+  --accent-dark:#4c5b38;
+  --ink:#f8f4ea;
+  --green-deep:#2c3322;
+  --green-soft:#e9eddb;
+  --r:20px;
+  --r-sm:12px;
+  --head:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Karla",system-ui,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--text);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(20px,4vw,40px)}
+.wrap-narrow{max-width:780px}
+.seccion{padding-block:clamp(64px,10vw,120px)}
+section[id]{scroll-margin-top:96px}
+[hidden]{display:none!important}
+
+::selection{background:rgba(var(--accent-rgb),.28)}
+:focus-visible{outline:2px solid var(--accent-dark);outline-offset:3px;border-radius:4px}
+
+/* ---------- barra superior ---------- */
+.topbar{
+  background:#556a3e;
+  color:var(--ink);
+  text-align:center;
+  font-size:.78rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:.55rem 1rem;
+}
+.topbar span{margin-inline:.7em;opacity:.55}
+
+/* ---------- cabecera ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,242,232,.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1180px;margin-inline:auto;
+  padding:.7rem clamp(20px,4vw,40px);
+  display:flex;align-items:center;gap:1.5rem;
+}
+.brand{display:flex;flex-direction:column;line-height:1.1;margin-right:auto}
+.brand-name{
+  font-family:var(--head);
+  font-weight:600;font-size:1.55rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent-dark);
+}
+.brand-sub{
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);margin-top:.15rem;
+}
+.nav-desktop{display:none;gap:1.9rem;align-items:center}
+.nav-desktop a{
+  font-size:.92rem;font-weight:600;letter-spacing:.04em;
+  padding:.5rem 0;position:relative;color:var(--text);
+}
+.nav-desktop a::after{
+  content:"";position:absolute;left:0;bottom:2px;height:1px;width:0;
+  background:var(--accent);transition:width .3s ease;
+}
+.nav-desktop a:hover{color:var(--accent-dark)}
+.nav-desktop a:hover::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:.9rem}
+.header-actions [data-lynkia-cart]{display:inline-flex;align-items:center;min-height:44px;color:var(--text)}
+.menu-btn{
+  display:inline-flex;flex-direction:column;justify-content:center;gap:6px;
+  width:44px;height:44px;border:1px solid var(--line);border-radius:50%;
+  background:var(--surface);cursor:pointer;align-items:center;
+  transition:border-color .25s ease;
+}
+.menu-btn:hover{border-color:var(--accent)}
+.menu-btn span{display:block;width:18px;height:1.6px;background:var(--text);transition:transform .3s ease,opacity .3s ease}
+.menu-btn[aria-expanded="true"] span:first-child{transform:translateY(3.8px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:last-child{transform:translateY(-3.8px) rotate(-45deg)}
+.nav-movil{
+  position:absolute;top:100%;left:0;right:0;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  display:flex;flex-direction:column;
+  padding:.5rem clamp(20px,4vw,40px) 1.2rem;
+  box-shadow:0 24px 40px -24px rgba(44,51,34,.35);
+}
+.nav-movil a{
+  padding:.85rem .25rem;font-weight:600;font-size:1.05rem;
+  border-bottom:1px dashed var(--line);
+}
+.nav-movil a:last-child{border-bottom:none}
+.nav-movil a:hover{color:var(--accent-dark)}
+@media(min-width:900px){
+  .nav-desktop{display:flex}
+  .menu-btn{display:none}
+}
+
+/* ---------- portada ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding-block:clamp(56px,8vw,110px);
+}
+.watermark{
+  position:absolute;bottom:-.14em;left:.06em;z-index:0;
+  font-family:var(--head);font-style:italic;font-weight:400;
+  font-size:clamp(4rem,11vw,9.5rem);line-height:1;
+  color:rgba(var(--accent-rgb),.055);
+  pointer-events:none;white-space:nowrap;user-select:none;
+}
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;gap:clamp(2.5rem,5vw,4.5rem);align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--accent-dark);margin-bottom:1.4rem;
+}
+.eyebrow::before{
+  content:"";width:34px;height:0;
+  border-top:1.5px dashed var(--accent);
+}
+.hero h1{
+  font-family:var(--head);font-weight:500;
+  font-size:clamp(2.6rem,6.4vw,4.5rem);
+  line-height:1.06;letter-spacing:-.01em;
+  max-width:12ch;
+}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.lede{
+  margin-top:1.3rem;font-size:clamp(1.1rem,1.6vw,1.3rem);
+  color:var(--muted);font-style:italic;font-family:var(--head);font-weight:400;
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:.8rem 1.9rem;border-radius:999px;
+  background:var(--accent-dark);color:var(--ink);
+  font-weight:700;font-size:.95rem;letter-spacing:.03em;
+  border:1px solid var(--accent-dark);
+  transition:background .3s ease,border-color .3s ease,transform .3s ease;
+}
+.btn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:.8rem 1.7rem;border-radius:999px;
+  border:1px solid var(--line);color:var(--accent-dark);
+  font-weight:700;font-size:.95rem;background:transparent;
+  transition:border-color .3s ease,background .3s ease,transform .3s ease;
+}
+.btn-ghost:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.08);transform:translateY(-2px)}
+.hero-media{position:relative}
+.hero-media img{
+  width:100%;aspect-ratio:1/1.02;object-fit:cover;
+  border-radius:clamp(140px,18vw,250px) clamp(140px,18vw,250px) var(--r) var(--r);
+  border:1px solid var(--line);
+}
+.hero-ring{
+  position:absolute;inset:-5% -6% auto auto;width:38%;
+  color:var(--accent);opacity:.5;
+  animation:spin 60s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(min-width:900px){
+  .hero-grid{grid-template-columns:1.05fr .95fr}
+}
+
+/* ---------- accesos en círculos ---------- */
+.cats{padding-block:clamp(24px,4vw,48px) clamp(48px,6vw,72px)}
+.cats-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:clamp(1.4rem,3vw,2.5rem);
+}
+.cat{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.35rem}
+.cat-ico{
+  width:clamp(92px,11vw,116px);height:clamp(92px,11vw,116px);
+  border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent-dark);
+  margin-bottom:.7rem;
+  transition:border-color .3s ease,background .3s ease,transform .3s ease,box-shadow .3s ease;
+}
+.cat-ico svg{width:44%;height:44%}
+.cat:hover .cat-ico{
+  border-color:var(--accent);background:var(--green-soft);
+  transform:translateY(-4px);
+  box-shadow:0 18px 30px -18px rgba(76,91,56,.4);
+}
+.cat strong{font-family:var(--head);font-weight:600;font-size:1.1rem;letter-spacing:.01em}
+.cat small{color:var(--muted);font-size:.85rem;letter-spacing:.04em}
+@media(min-width:760px){.cats-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- cabeceras de sección ---------- */
+.sec-head{text-align:center;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.sec-num{
+  font-family:var(--head);font-style:italic;
+  color:var(--accent);font-size:1rem;letter-spacing:.12em;
+  margin-bottom:.8rem;
+}
+.sec-title{
+  font-family:var(--head);font-weight:500;
+  font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.12;
+  display:flex;align-items:center;justify-content:center;gap:1.3rem;
+}
+.sec-title em{font-style:italic;color:var(--accent)}
+.sec-title::before,.sec-title::after{
+  content:"";height:1px;flex:1;max-width:110px;background:var(--line);
+}
+
+/* ---------- colecciones ---------- */
+.col-grid{
+  display:grid;grid-template-columns:1fr;
+  gap:clamp(1.2rem,2.5vw,1.6rem);
+}
+.col-card{
+  position:relative;display:block;border-radius:var(--r);
+  overflow:hidden;border:1px solid var(--line);
+}
+.col-card img{
+  width:100%;aspect-ratio:3/3.6;object-fit:cover;
+  transition:transform .6s ease;
+}
+.col-card:hover img{transform:scale(1.04)}
+.col-card::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(44,51,34,.28),transparent 45%);
+  pointer-events:none;
+}
+.col-pill{
+  position:absolute;left:14px;bottom:14px;z-index:2;
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:rgba(253,250,242,.94);
+  color:var(--accent-dark);
+  font-family:var(--head);font-weight:600;font-size:.98rem;
+  padding:.55rem 1.05rem;border-radius:999px;
+  border:1px solid rgba(221,212,191,.9);
+  transition:background .3s ease,color .3s ease;
+}
+.col-pill svg{width:15px;height:15px;transition:transform .3s ease}
+.col-card:hover .col-pill{background:var(--accent-dark);color:var(--ink)}
+.col-card:hover .col-pill svg{transform:translateX(3px)}
+@media(min-width:640px){.col-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.col-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- garantías ---------- */
+.garantias{
+  background:var(--green-soft);
+  padding-block:clamp(48px,6vw,72px);
+  border-block:1px solid var(--line);
+}
+.gar-grid{
+  display:grid;grid-template-columns:1fr;
+  gap:clamp(1.8rem,3vw,2.5rem);
+}
+.gar{display:flex;align-items:flex-start;gap:1rem}
+.gar-ico{
+  flex:none;width:56px;height:56px;border-radius:50%;
+  border:1.5px dashed rgba(var(--accent-rgb),.65);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent-dark);background:rgba(253,250,242,.6);
+}
+.gar-ico svg{width:26px;height:26px}
+.gar strong{font-family:var(--head);font-weight:600;font-size:1.06rem;display:block;margin-bottom:.15rem}
+.gar p{font-size:.92rem;color:var(--muted)}
+@media(min-width:640px){.gar-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.gar-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- tienda ---------- */
+.tienda{background:var(--bg)}
+
+/* ---------- banda oscura · nosotros ---------- */
+.band-dark{
+  background:var(--green-deep);
+  color:#f0ecdf;
+  position:relative;overflow:hidden;
+}
+.band-dark .sec-title::before,.band-dark .sec-title::after{background:rgba(240,236,223,.22)}
+.band-dark .sec-title em{color:#b3c494}
+.band-dark .sec-num{color:#b3c494}
+.watermark-light{color:rgba(240,236,223,.05);left:auto;right:-.05em}
+.nos-grid{display:grid;gap:clamp(2.5rem,5vw,4rem);position:relative;z-index:1}
+.nos-lead{
+  font-family:var(--head);font-size:clamp(1.25rem,2.2vw,1.55rem);
+  line-height:1.4;font-weight:400;margin-bottom:1.3rem;
+}
+.nos-copy p+p{margin-top:1rem;color:#c9cdb9}
+.nos-tags{
+  list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem;
+}
+.nos-tags li{
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid rgba(240,236,223,.3);border-radius:999px;
+  padding:.45rem 1rem;color:#e6e2d3;
+}
+.nos-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.nos-gal img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;
+  border-radius:var(--r-sm);border:1px solid rgba(240,236,223,.18);
+}
+.nos-gal img:nth-child(2){transform:translateY(1.4rem)}
+@media(max-width:560px){.nos-gal img:nth-child(2){transform:none}}
+@media(min-width:960px){.nos-grid{grid-template-columns:1.05fr .95fr;align-items:center}}
+
+/* ---------- personaliza ---------- */
+.steps{
+  display:grid;grid-template-columns:1fr;
+  gap:clamp(1.2rem,2.5vw,1.8rem);
+}
+.step{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);padding:2rem 1.8rem;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.step:hover{transform:translateY(-4px);box-shadow:0 22px 36px -26px rgba(76,91,56,.45)}
+.step-num{
+  font-family:var(--head);font-style:italic;font-size:2.2rem;
+  color:var(--accent);line-height:1;margin-bottom:1rem;
+}
+.step h3{font-family:var(--head);font-weight:600;font-size:1.25rem;margin-bottom:.5rem}
+.step p{color:var(--muted);font-size:.97rem}
+.steps-cta{text-align:center;margin-top:clamp(2.2rem,4vw,3rem)}
+@media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- faq ---------- */
+.faq{padding-top:0}
+.faq-list{border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.3rem .2rem;
+  font-family:var(--head);font-weight:600;font-size:1.12rem;
+  transition:color .25s ease;
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:hover{color:var(--accent-dark)}
+.faq-plus{position:relative;flex:none;width:22px;height:22px}
+.faq-plus::before,.faq-plus::after{
+  content:"";position:absolute;top:50%;left:50%;background:var(--accent-dark);
+  transition:transform .3s ease;
+}
+.faq-plus::before{width:14px;height:1.6px;transform:translate(-50%,-50%)}
+.faq-plus::after{width:1.6px;height:14px;transform:translate(-50%,-50%)}
+.faq-list details[open] .faq-plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-list details p{padding:0 .2rem 1.4rem;color:var(--muted);max-width:60ch}
+
+/* ---------- contacto ---------- */
+.contacto{padding-top:0}
+.contacto-inner{text-align:center}
+.contacto-text{color:var(--muted);max-width:52ch;margin:0 auto 2.2rem;font-size:1.08rem}
+.social-row{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+.social-row a{
+  display:inline-flex;align-items:center;gap:.6rem;
+  min-height:48px;padding:.65rem 1.35rem;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);
+  font-weight:700;font-size:.92rem;color:var(--accent-dark);
+  transition:border-color .3s ease,background .3s ease,transform .3s ease;
+}
+.social-row a svg{width:19px;height:19px}
+.social-row a:hover{border-color:var(--accent);background:var(--green-soft);transform:translateY(-2px)}
+
+/* ---------- newsletter ---------- */
+.newsletter{
+  background:var(--green-soft);
+  border-block:1px solid var(--line);
+  padding-block:clamp(56px,8vw,96px);
+}
+.newsletter-inner{max-width:680px;text-align:center}
+
+/* ---------- pie ---------- */
+.footer{background:var(--green-deep);color:#d9d5c6}
+.footer-grid{
+  display:grid;gap:2.4rem;
+  padding-block:clamp(3rem,6vw,4.5rem) 2rem;
+}
+.footer-brand .brand-name{color:#f0ecdf}
+.footer-brand .brand-sub{color:#a9ad96}
+.footer-brand p{margin-top:1.1rem;font-size:.92rem;color:#a9ad96;max-width:34ch}
+.footer-nav,.footer-social{display:flex;flex-direction:column;gap:.35rem}
+.footer-nav a,.footer-social a{
+  padding:.35rem 0;font-size:.95rem;color:#d9d5c6;
+  transition:color .25s ease;
+}
+.footer-nav a:hover,.footer-social a:hover{color:#fff}
+.footer-social a::before{content:"—  ";color:var(--accent)}
+.footer-bottom{
+  border-top:1px solid rgba(240,236,223,.14);
+  padding-block:1.3rem;
+  font-size:.82rem;color:#8f937d;
+}
+@media(min-width:820px){
+  .footer-grid{grid-template-columns:1.4fr 1fr 1fr;gap:3rem}
+}
+
+/* ---------- aparición al hacer scroll ---------- */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .hero-ring{animation:none}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+/* Tarjetas de la tienda y el contenido (bloques vivos de Lynkia) */
+.lk-items{display:grid;grid-template-columns:repeat(var(--cm),minmax(0,1fr));gap:16px}
+@media (min-width:640px){.lk-items{grid-template-columns:repeat(var(--ct),minmax(0,1fr))}}
+@media (min-width:1024px){.lk-items{grid-template-columns:repeat(var(--cd),minmax(0,1fr))}}
+.lk-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.lk-chip{appearance:none;font:inherit;font-size:.85rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;transition:background .15s ease,border-color .15s ease}
+.lk-chip:hover{border-color:rgba(var(--accent-rgb),.7)}
+.lk-chip.on{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.lk-skel{aspect-ratio:4/5;border-radius:var(--r);background:linear-gradient(100deg,var(--surface) 30%,var(--line) 50%,var(--surface) 70%);background-size:300% 100%;animation:lk-sk 1.4s ease-in-out infinite}
+@keyframes lk-sk{to{background-position:-100% 0}}
+.lk-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;color:inherit;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;min-width:0}
+.lk-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(var(--accent-rgb),.55)}
+.lk-card-media{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,rgba(var(--accent-rgb),.25),var(--surface))}
+.lk-card-media img{width:100%;height:100%;object-fit:cover}
+/* Las fotos de un producto se deslizan (08-11-2026): con el dedo, o con las flechas al pasar el raton. */
+.lk-slides{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.lk-slides::-webkit-scrollbar{display:none}
+.lk-slides img{flex:0 0 100%;scroll-snap-align:start;-webkit-user-drag:none}
+.lk-slide-btn{position:absolute;top:50%;z-index:2;display:flex;align-items:center;justify-content:center;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:20px;line-height:1;box-shadow:0 4px 14px rgba(0,0,0,.18);opacity:0;transform:scale(.85);transition:opacity .2s ease,transform .2s ease;cursor:pointer}
+.lk-slide-prev{left:10px}.lk-slide-next{right:10px}
+.lk-card:hover .lk-slide-btn{opacity:1;transform:none}
+.lk-slide-btn[aria-disabled=true]{opacity:0!important;pointer-events:none}
+.lk-dots{position:absolute;left:0;right:0;bottom:10px;z-index:2;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.lk-dots i{width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(0,0,0,.08);transition:width .25s ease,background .25s ease}
+.lk-dots i.on{width:16px;background:#fff}
+@media (hover:none){.lk-slide-btn{display:none}}
+.lk-badge{position:absolute;top:10px;left:10px;padding:.2rem .6rem;border-radius:999px;background:rgba(0,0,0,.62);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.02em}
+.lk-badge-out{left:auto;right:10px;background:#b42318}
+.lk-card-body{display:flex;flex-direction:column;gap:.35rem;padding:14px 16px 16px;flex:1}
+.lk-card-kind{color:var(--accent);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.lk-card-title{font-family:var(--head);font-size:1.05rem;font-weight:600;line-height:1.25}
+.lk-card-desc{color:var(--muted);font-size:.9rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.lk-card-meta{color:var(--muted);font-size:.82rem}
+.lk-card-rating{display:flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600}.lk-card-rating span{color:var(--muted);font-weight:400}
+.lk-stars{--p:calc(var(--r) / 5 * 100%);display:inline-block;font-size:.85rem;letter-spacing:1px;line-height:1;background:linear-gradient(90deg,#F5B301 var(--p),color-mix(in srgb,var(--text) 18%,transparent) var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lk-stars::before{content:"★★★★★"}
+.lk-card-foot{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:auto;padding-top:.5rem;flex-wrap:wrap}
+.lk-price{font-weight:700}.lk-price s{margin-right:.4rem;color:var(--muted);font-weight:500}
+.lk-btn{display:inline-block;padding:.5rem .95rem;border-radius:var(--r-sm);background:var(--accent);color:var(--ink);font-size:.85rem;font-weight:600;white-space:nowrap}
+.lk-featured{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr)}
+.lk-featured .lk-card-foot{margin-top:.75rem}
+@media (min-width:640px){.lk-featured{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.lk-featured .lk-card-media{aspect-ratio:16/10}.lk-featured .lk-card-body{padding:28px;justify-content:center}.lk-featured .lk-card-title{font-size:1.6rem}}
+.lk-empty{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:12px;min-height:132px;margin:0;padding:32px 24px;text-align:center;color:var(--text);font-size:1.02rem;font-weight:600;border:1.5px dashed rgba(var(--accent-rgb),.5);border-radius:var(--r);background:linear-gradient(135deg,rgba(var(--accent-rgb),.1),transparent)}
+.lk-empty::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--accent);animation:lk-pulse 1.8s ease-in-out infinite}
+@keyframes lk-pulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.lk-card,.lk-link{transition:none}.lk-skel,.lk-empty::before{animation:none}}
+.lk-cart{display:inline-flex;align-items:center;gap:7px;color:inherit;text-decoration:none;font:inherit;font-weight:600;white-space:nowrap;cursor:pointer}
+.lk-cart svg{width:1.2em;height:1.2em;flex:none}
+.lk-cart:hover{opacity:.8}
+.lk-cart-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.45em;height:1.45em;padding:0 .4em;border-radius:999px;background:var(--accent);color:var(--ink,#fff);font-size:.78em;font-weight:700;line-height:1}
+.lk-cart-count[hidden]{display:none}
+.lk-nav-in .lk-cart{order:1;margin-left:auto;color:var(--text)}
+.lk-nav-in .lk-nav-links{order:2}
+@media (min-width:640px){.lk-nav-in .lk-cart{order:3;margin-left:0}.lk-nav-in .lk-nav-links{order:0}.lk-nav-in .lk-nav-brand+.lk-cart{margin-left:auto}}
+.lk-cart-float{position:fixed;top:14px;right:14px;z-index:60;padding:9px 14px;border-radius:999px;background:var(--accent);color:var(--ink,#fff);box-shadow:0 4px 18px rgba(0,0,0,.22)}
+.lk-cart-float .lk-cart-count{background:var(--ink,#fff);color:var(--accent)}
+
+/* Red de seguridad de Lynkia */
+[hidden]{display:none!important}
+html{overflow-x:clip}
+img,video{max-width:100%}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'><rect%20width='64'%20height='64'%20rx='14'%20fill='%236e8453'/><text%20x='32'%20y='44'%20font-size='32'%20font-family='Arial,sans-serif'%20font-weight='700'%20fill='white'%20text-anchor='middle'>R</text></svg>" />
+</head>
+<body>
+
+<div class="topbar">
+  <p>Envíos a toda España <span aria-hidden="true">·</span> Productos personalizados <span aria-hidden="true">·</span> Calidad artesanal</p>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#inicio">
+      <span class="brand-name">Nelqia</span>
+      <span class="brand-sub">atelier de bordado</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Menú principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#personaliza">Personaliza</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <a data-lynkia-cart></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navMovil" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-movil" id="navMovil" hidden aria-label="Menú móvil">
+    <a href="#inicio">Inicio</a>
+    <a href="#tienda">Tienda</a>
+    <a href="#personaliza">Personaliza</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- PORTADA -->
+  <section class="hero" id="inicio">
+    <span class="watermark" aria-hidden="true">puntadas</span>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Atelier de bordado personalizado</p>
+        <h1>Bordados personalizados <em>con alma artesanal</em></h1>
+        <p class="lede">Cada puntada cuenta una historia.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#tienda">Descubrir la tienda</a>
+          <a class="btn-ghost" href="#personaliza">Personaliza tu pieza</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2.5 3.5" stroke-linecap="round"/></svg>
+        <img src="https://api.lynkia.app/shop/images/58176046-5654-4501-ac98-5718f10ef844" alt="Bastidor bordado con dos anillos y hojas, para una boda">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ACCESOS EN CÍRCULOS -->
+  <section class="cats" aria-label="Categorías">
+    <div class="wrap cats-grid">
+      <a class="cat reveal" href="?categoria=bebe#tienda">
+        <span class="cat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.2 3.2c.3 2.4 1.7 4 3.8 4s3.5-1.6 3.8-4"/><path d="M5.6 4.3C4.2 6 3.6 8.1 4 10.4c.3 1.8.2 3.4-.3 4.9-.6 2 .6 3.6 2.3 4.5 2.9 1.5 9.1 1.5 12 0 1.7-.9 2.9-2.5 2.3-4.5-.5-1.5-.6-3.1-.3-4.9.4-2.3-.2-4.4-1.6-6.1"/><path d="M10 12.5c.6-.9 1.4-1.4 2-1.4s1.4.5 2 1.4"/></svg>
+        </span>
+        <strong>Bebé</strong>
+        <small>bebé e infantil</small>
+      </a>
+      <a class="cat reveal" href="?categoria=bolsos#tienda">
+        <span class="cat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.8 8.2h12.4l-1.1 12.3H6.9L5.8 8.2z"/><path d="M9 8.2V6.5a3 3 0 0 1 6 0v1.7"/><path d="M10.4 12.5h3.2" stroke-dasharray="1.5 2"/></svg>
+        </span>
+        <strong>Bolsos</strong>
+        <small>bolsos y accesorios</small>
+      </a>
+      <a class="cat reveal" href="?categoria=detalles-boda#tienda">
+        <span class="cat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3S5.2 15.8 3.2 11.4C2 8.8 3.6 5.9 6.2 5.9c1.8 0 3 1 3.9 2.4.9-1.4 2.1-2.4 3.9-2.4 2.6 0 4.2 2.9 3 5.5-2.1 4.4-5 8.9-5 8.9z"/><path d="M8 9.5c-.5.6-.7 1.3-.6 2" /></svg>
+        </span>
+        <strong>Detalles</strong>
+        <small>regalos especiales</small>
+      </a>
+      <a class="cat reveal" href="#personaliza">
+        <span class="cat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 20.2 17.5 6.5"/><path d="M14.6 3.6c1.9-1 4.8-.9 6.2.5-.9 1.6-2.6 2.7-4.6 3.1"/><path d="M3.8 20.2c3 .6 7.2-.9 9.3-3.9"/></svg>
+        </span>
+        <strong>Personaliza</strong>
+        <small>diseños a tu medida</small>
+      </a>
+    </div>
+  </section>
+
+  <!-- COLECCIONES -->
+  <section class="seccion colecciones" id="colecciones">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-num">N.º 01</p>
+        <h2 class="sec-title">Nuestras <em>colecciones</em></h2>
+      </div>
+      <div class="col-grid">
+        <a class="col-card reveal" href="?categoria=bebe#tienda">
+          <img src="https://api.lynkia.app/shop/images/51a08059-5620-47d9-b82c-2bcb98604b7a" alt="Baberos redondos de piqué bordados con el nombre del bebé" loading="lazy">
+          <span class="col-pill">Bebé e infantil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="col-card reveal" href="?categoria=bolsos#tienda">
+          <img src="https://api.lynkia.app/shop/images/b9db9bf0-ac77-4bfb-9b7f-a5b34735e370" alt="Llaveros de tela bordados con un nombre" loading="lazy">
+          <span class="col-pill">Bolsos y accesorios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="col-card reveal" href="?categoria=detalles-boda#tienda">
+          <img src="https://api.lynkia.app/shop/images/ad0366cf-1f85-46d2-8c7b-05d341395808" alt="Chupeteros personalizados con nombres bordados" loading="lazy">
+          <span class="col-pill">Pequeños detalles <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="col-card reveal" href="?categoria=bano#tienda">
+          <img src="https://api.lynkia.app/shop/images/55dda6e3-8551-4362-8be6-8e009d2eb4d7" alt="Capa de baño blanca bordada con un nombre" loading="lazy">
+          <span class="col-pill">Baño y cuidado <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTÍAS -->
+  <section class="garantias" aria-label="Nuestras garantías">
+    <div class="wrap gar-grid">
+      <div class="gar reveal">
+        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3S5.2 15.8 3.2 11.4C2 8.8 3.6 5.9 6.2 5.9c1.8 0 3 1 3.9 2.4.9-1.4 2.1-2.4 3.9-2.4 2.6 0 4.2 2.9 3 5.5-2.1 4.4-5 8.9-5 8.9z"/><path d="M7.6 12.8l1.4 1.4 2.6-2.8" /></svg></span>
+        <div><strong>Artesanal y único</strong><p>No hay dos piezas iguales.</p></div>
+      </div>
+      <div class="gar reveal">
+        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.1-4L15.8 5.3a2.1 2.1 0 0 1 3 0l0 0a2.1 2.1 0 0 1 0 3L8 19 4 20z"/><path d="M13.8 7.3l3 3"/></svg></span>
+        <div><strong>Diseños personalizados</strong><p>Tu nombre, tu inicial o tu idea.</p></div>
+      </div>
+      <div class="gar reveal">
+        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 9.5 11 4.2 20 4c0 9-5.5 15-15 15z"/><path d="M5 19c3-5.5 7-9.6 11.5-11.5"/></svg></span>
+        <div><strong>Materiales de alta calidad</strong><p>Telas escogidas y acabados cuidados.</p></div>
+      </div>
+      <div class="gar reveal">
+        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5h10.5v9.5H2.5z"/><path d="M13 10h4.2l3 3v3H13"/><circle cx="6.5" cy="17.8" r="1.7"/><circle cx="17" cy="17.8" r="1.7"/></svg></span>
+        <div><strong>Envíos a toda España</strong><p>Tu pedido llega a cualquier rincón.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIENDA -->
+  <section class="seccion tienda" id="tienda">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-num">N.º 02</p>
+        <h2 class="sec-title">Productos <em>destacados</em></h2>
+      </div>
+      <div class="lk-items" data-lynkia-block="b73ced2ad" style="--cd:3;--ct:2;--cm:1"><div class="lk-skel"></div><div class="lk-skel"></div><div class="lk-skel"></div></div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="seccion band-dark nosotros" id="nosotros">
+    <span class="watermark watermark-light" aria-hidden="true">atelier</span>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-num">N.º 03</p>
+        <h2 class="sec-title">Un atelier con <em>nombre propio</em></h2>
+      </div>
+      <div class="nos-grid">
+        <div class="nos-copy reveal">
+          <p class="nos-lead">Nelqia es un atelier de bordado personalizado. Bordamos a mano y a máquina piezas para el día a día y para regalar.</p>
+          <p>Capas de baño, baberos, mantas y chupeteros para bebé; bolsos, neceseres y llaveros; y detalles para bodas, como bastidores con los anillos. Cada pieza lleva el nombre, la inicial o el diseño que elige quien la encarga, así que no hay dos iguales.</p>
+          <p>Trabajamos con telas de calidad, cuidamos el acabado y enviamos a toda España.</p>
+          <ul class="nos-tags" aria-label="Especialidades">
+            <li>Bebé e infantil</li>
+            <li>Bolsos y neceseres</li>
+            <li>Bodas y eventos</li>
+          </ul>
+        </div>
+        <div class="nos-gal reveal">
+          <img src="https://api.lynkia.app/shop/images/1e2e6413-0b7f-40f8-b907-34811a100146" alt="Manta de bebé de topitos bordada" loading="lazy">
+          <img src="https://api.lynkia.app/shop/images/163e35c6-c9b6-4bf0-8170-1049adf53c1b" alt="Letras de tela estampada con el nombre de una niña" loading="lazy">
+          <img src="https://api.lynkia.app/shop/images/856bc8de-80e0-4263-9c20-cdfadb427e82" alt="Correas de tela para reloj, en varios colores" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONALIZA -->
+  <section class="seccion personaliza" id="personaliza">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-num">N.º 04</p>
+        <h2 class="sec-title">Diseños <em>a tu medida</em></h2>
+      </div>
+      <div class="steps">
+        <article class="step reveal">
+          <p class="step-num">i.</p>
+          <h3>Elige la pieza</h3>
+          <p>Un babero, una capa de baño, un bolso, un llavero o un bastidor para el gran día.</p>
+        </article>
+        <article class="step reveal">
+          <p class="step-num">ii.</p>
+          <h3>Cuéntanos tu idea</h3>
+          <p>El nombre, la inicial o el diseño que quieres ver bordado. Nosotros le damos forma.</p>
+        </article>
+        <article class="step reveal">
+          <p class="step-num">iii.</p>
+          <h3>La bordamos para ti</h3>
+          <p>A mano o a máquina, con telas de calidad y un acabado cuidado. Y la enviamos a toda España.</p>
+        </article>
+      </div>
+      <p class="steps-cta reveal"><a class="btn" href="#contacto">Encargar mi diseño</a></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="seccion faq" id="faq">
+    <div class="wrap wrap-narrow">
+      <div class="sec-head reveal">
+        <p class="sec-num">N.º 05</p>
+        <h2 class="sec-title">Preguntas <em>frecuentes</em></h2>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>¿Qué piezas puedo personalizar?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <p>Todas las del atelier: capas de baño, baberos, mantas y chupeteros para bebé; bolsos, neceseres y llaveros; y detalles para bodas, como los bastidores con los anillos. Cada pieza puede llevar el nombre, la inicial o el diseño que elijas.</p>
+        </details>
+        <details>
+          <summary>¿Bordáis a mano o a máquina?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <p>Trabajamos las dos técnicas. Elegimos la más adecuada para cada pieza y cada diseño, cuidando siempre el acabado final.</p>
+        </details>
+        <details>
+          <summary>¿Hacéis envíos?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <p>Sí, enviamos nuestros bordados a toda España.</p>
+        </details>
+        <details>
+          <summary>¿Cómo encargo un diseño a medida?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <p>Cuéntanos tu idea desde la sección de contacto: la pieza que te gusta, el nombre o el diseño que imaginas y la ocasión. Te ayudamos a darle forma, puntada a puntada.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="seccion contacto" id="contacto">
+    <div class="wrap wrap-narrow contacto-inner">
+      <div class="sec-head reveal">
+        <p class="sec-num">N.º 06</p>
+        <h2 class="sec-title">Hablemos de <em>tu pieza</em></h2>
+      </div>
+      <p class="contacto-text reveal">¿Tienes una idea entre manos? Cuéntanos qué quieres bordar —un nombre, una inicial o un diseño especial— a través de nuestras redes sociales y te ayudamos a crearlo.</p>
+      <div class="social-row reveal">
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram de Nelqia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook de Nelqia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 4H13a3.5 3.5 0 0 0-3.5 3.5V10H7v3.5h2.5V21h3.8v-7.5h2.7l.5-3.5h-3.2V7.8c0-.9.6-1.3 1.4-1.3h1.8V4z"/></svg>
+          Facebook
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="TikTok de Nelqia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5v10.2a4.4 4.4 0 1 1-3.3-4.25"/><path d="M14.5 3.5c.35 2.7 2 4.4 4.7 4.7"/></svg>
+          TikTok
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Pinterest de Nelqia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M10 20.5c.6-2.4 1.6-7 1.6-7"/><path d="M11.6 13.5c-.4-.8-.6-1.5-.6-2.2 0-1.6 1-2.8 2.5-2.8 1.4 0 2.3 1 2.3 2.5 0 1.9-1.2 3.5-3 3.5-.9 0-1.6-.5-1.9-1.1"/></svg>
+          Pinterest
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="wrap newsletter-inner reveal">
+      <div data-lynkia-newsletter data-title="Únete a Nelqia" data-text="Recibe de vez en cuando las novedades del atelier: nuevas piezas, colecciones e ideas para regalar." data-button="Quiero suscribirme" data-consent="Acepto recibir emails de Nelqia"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <span class="brand-name">Nelqia</span>
+      <span class="brand-sub">atelier de bordado</span>
+      <p>Bordados personalizados, hechos a mano y a máquina, con envíos a toda España.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Menú del pie de página">
+      <a href="#inicio">Inicio</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#personaliza">Personaliza</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <nav class="footer-social" aria-label="Redes sociales">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">Facebook</a>
+      <a href="#" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" target="_blank" rel="noopener">Pinterest</a>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© <span id="year">2025</span> Nelqia · Cada puntada cuenta una historia</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn');
+  var nav=document.getElementById('navMovil');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!open));
+      btn.setAttribute('aria-label',open?'Abrir menú':'Cerrar menú');
+      nav.hidden=open;
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        nav.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Abrir menú');
+      });
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&!nav.hidden){
+        nav.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        btn.focus();
+      }
+    });
+    window.addEventListener('resize',function(){
+      if(window.innerWidth>=900){nav.hidden=true;btn.setAttribute('aria-expanded','false');}
+    });
+  }
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  }
+  var y=document.getElementById('year');
+  if(y){y.textContent=new Date().getFullYear();}
+})();
+</script>
+<script type="application/json" id="lynkia-site-config">{"handle": "raquel-gonzalez-nieto", "api": "https://api.lynkia.app", "store": "https://lynkia.app/c/raquel-gonzalez-nieto"}</script>
+  <script src="lynkia-site.js?v=a60bed492b" defer></script>
+<div data-lynkia-badge style="all:revert;position:fixed;left:0;right:0;bottom:0;z-index:2147483647;display:flex;justify-content:center;pointer-events:none;padding:10px 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"><a href="https://lynkia.app/?ref=raquel-gonzalez-nieto" target="_blank" rel="noopener noreferrer" style="all:revert;pointer-events:auto;display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:#15151f;color:#fff;text-decoration:none;font-size:12px;font-weight:500;opacity:0.9;transition:opacity .15s;box-shadow:0 2px 12px rgba(0,0,0,.35);" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.9">Made with <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" style="all:revert;display:inline-block;vertical-align:middle;fill:#9B8CFF !important;"><path style="fill:#9B8CFF !important;" d="M12 21s-7.5-4.6-10.2-9.3C.3 8.8 1.4 5.3 4.6 4.2c2-.7 4.1 0 5.4 1.8 1.3-1.8 3.4-2.5 5.4-1.8 3.2 1.1 4.3 4.6 2.8 7.5C19.5 16.4 12 21 12 21z"/></svg> by Lynkia.app</a></div><script defer src="https://lynkia.app/lynkia-stats.js?v=1" data-lynkia-stats></script></body>
+</html>
