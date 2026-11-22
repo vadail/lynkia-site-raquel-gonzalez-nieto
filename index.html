@@ -11,8 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>/* ============ NELQIA · atelier de bordado ============ */
 :root{
-  --bg:#f7f2e8;
-  --surface:#fdfaf2;
+  --bg:#fcf7f1;
+  --surface:#fffdf8;
   --text:#2d3226;
   --muted:#6a6e5b;
   --line:#ddd4bf;
@@ -498,20 +498,129 @@ section[id]{scroll-margin-top:96px}
 html{overflow-x:clip}
 img,video{max-width:100%}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Logo de la marca (23-11-2026): vectorial, nitido a cualquier tamaño; en el pie va en claro sobre el verde. */
+.brand-mark{display:block;width:168px}
+.brand-mark svg{width:100%;height:auto;display:block}
+.footer-brand .brand-mark{width:200px;margin-bottom:.9rem}
+.brand-mark-light svg [stroke="#4E6133"],.brand-mark-light svg [stroke="#89A269"]{stroke:#CBD8B4}
+.brand-mark-light svg text{fill:#F3EFE4}
+.brand-mark-light svg text + text,.brand-mark-light svg text:last-of-type{fill:#B6C79A}
+@media (max-width:640px){.brand-mark{width:132px}}
+
+
+/* === Ajuste al diseño original de la marca (23-11-2026) === */
+.topbar{background:#6e8453;text-align:left;text-transform:none;letter-spacing:.02em;font-weight:500;font-size:.86rem;padding:.5rem clamp(20px,4vw,40px)}
+.topbar-in{max-width:1180px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.topbar-msgs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.3rem clamp(1.2rem,5vw,4.2rem)}
+.topbar-msgs li{display:inline-flex;align-items:center;gap:.55rem;white-space:nowrap}
+.topbar svg{width:19px;height:19px;flex:0 0 auto}
+.topbar-social{display:flex;gap:.95rem}
+.topbar-social a{color:inherit;display:inline-flex;opacity:.95}
+.topbar-social a:hover{opacity:.7}
+@media(max-width:760px){.topbar-msgs li:nth-child(n+2){display:none}.topbar-in{justify-content:space-between}}
+
+.site-header{background:var(--bg)}
+.header-inner{display:grid;grid-template-columns:auto 1fr auto;padding-block:.55rem}
+.nav-desktop{justify-content:center;gap:2.4rem}
+.nav-desktop a{font-family:var(--head);font-weight:500;font-size:1.06rem;letter-spacing:0}
+.header-actions{justify-self:end}
+.brand-mark{width:176px}
+
+.hero-full{position:relative;overflow:hidden;background:linear-gradient(90deg,#fbf3e6 0%,#f7ecdb 55%,#f3e6d1 100%);padding-block:clamp(56px,7.5vw,104px);min-height:clamp(360px,36vw,500px);display:flex;align-items:center}
+.hero-full>.wrap{position:relative;z-index:1;width:100%}
+.hero-bg{position:absolute;top:0;right:0;bottom:0;width:60%;background:url("https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-hero-9289dac8.webp") center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);mask-image:linear-gradient(90deg,transparent 0,#000 30%)}
+.hero-full .hero-copy{max-width:470px}
+.hero-full h1{max-width:none;font-size:clamp(2.3rem,4.6vw,3.5rem);line-height:1.08;color:#2f4320;font-weight:500}
+.hero-full h1 em{display:block;font-weight:400;font-size:.86em;color:#4e6133}
+.hero-rule{display:flex;align-items:center;gap:.8rem;margin:1.3rem 0 1rem;color:#a98a4b;max-width:330px}
+.hero-rule span{flex:1;height:1px;background:currentColor;opacity:.7}
+.hero-rule svg{width:24px;height:24px}
+.hero-full .lede{font-family:var(--head);font-style:italic;font-size:1.2rem;color:#3c4a2c;margin:0}
+.hero-full .btn{display:inline-flex;align-items:center;gap:.6rem;background:#6e8453;border-color:#6e8453;font-family:var(--head);font-weight:500;font-size:1.08rem;letter-spacing:0;border-radius:12px;padding:.8rem 1.6rem}
+.hero-full .btn svg{width:17px;height:17px}
+@media(max-width:760px){
+  .hero-full{display:block;padding-block:40px 0;min-height:0}
+  .hero-bg{position:relative;width:auto;height:250px;margin-top:32px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%);mask-image:linear-gradient(180deg,transparent 0,#000 22%)}
+  .hero-full>.wrap{order:-1}
+}
+
+.cats{padding-block:clamp(26px,3.4vw,44px);border-bottom:1px solid var(--line)}
+.cat-ico{background:#eef0df;border-color:transparent;color:#7a8f55}
+.cat strong{font-family:var(--head);font-weight:600;font-size:1.3rem;color:#2f4320}
+.cat small{font-size:.98rem;color:var(--text);text-transform:none;letter-spacing:0}
+
+.sec-num{display:none}
+.sec-title em{font-weight:500}
+.seccion.colecciones{padding-top:clamp(40px,5vw,64px)}
+.col-card{overflow:visible;border:0;margin-bottom:14px}
+.col-card img{aspect-ratio:1.28/1;border-radius:16px}
+.col-pill{left:50%;bottom:-14px;transform:translateX(-50%);white-space:nowrap;background:#fffaf0;border-color:#eadfc8;color:#2f4320;font-weight:500;font-size:.98rem;padding:.5rem 1.4rem;box-shadow:0 8px 18px -12px rgba(60,50,20,.5)}
+.col-card:hover .col-pill{background:#6e8453;color:#fff}
+
+.tienda .lk-card{background:transparent;border:0;border-radius:0;box-shadow:none}
+.tienda .lk-card:hover{transform:none;box-shadow:none}
+.tienda .lk-card-media{border-radius:14px;overflow:hidden;aspect-ratio:1.2/1}
+.tienda .lk-card-body{text-align:center;padding:.9rem .4rem .2rem;align-items:center}
+.tienda .lk-card-title{font-family:var(--body);font-weight:500;font-size:1rem}
+.tienda .lk-card-foot{justify-content:center;margin-top:.25rem}
+.tienda .lk-price{font-family:var(--head);font-size:1.12rem;font-weight:500}
+.tienda .lk-btn{display:none}
+.tienda .lk-filters{justify-content:center}
+
+.newsletter{position:relative;overflow:hidden;background:#dfe6cc;padding-block:clamp(40px,5vw,64px)}
+.newsletter-inner{position:relative;z-index:1;max-width:980px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:clamp(1.4rem,4vw,3.2rem);text-align:left}
+.nl-machine{width:clamp(110px,13vw,170px);color:#6e8453}
+.newsletter .lk-nl{max-width:none;margin:0;text-align:left;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:.4rem 2rem;align-items:center}
+.newsletter .lk-nl-title{grid-column:1;margin:0;font-style:italic;font-weight:500;color:#2f4320}
+.newsletter .lk-nl-text{grid-column:1;margin:0;color:#3c4a2c}
+.newsletter .lk-nl-form{grid-column:2;grid-row:1 / span 2}
+.newsletter .lk-nl-done{grid-column:1 / -1}
+.newsletter .lk-nl-input{background:#fffdf8;border-color:transparent}
+.newsletter .lk-nl-btn{background:#6e8453;font-family:var(--head);font-weight:500}
+.nl-branch{position:absolute;bottom:-18px;width:clamp(70px,9vw,120px);color:#8ea66c;opacity:.75}
+.nl-left{left:-8px;transform:rotate(14deg)}
+.nl-right{right:-8px;transform:scaleX(-1) rotate(14deg)}
+@media(max-width:860px){
+  .newsletter-inner{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .newsletter .lk-nl{display:block;text-align:center}
+  .newsletter .lk-nl-form{margin-top:1rem}
+  .nl-branch{opacity:.35}
+}
+.brand-mark{width:206px}
+.col-card img{object-position:center top}
+.col-pill{bottom:-18px}
+@media(max-width:760px){
+  .hero-full{display:flex;flex-direction:column;align-items:stretch;padding-block:36px 0}
+  .hero-full>.wrap{order:1}
+  .hero-bg{order:2;margin-top:28px}
+  .brand-mark{width:150px}
+}
 </style>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'><rect%20width='64'%20height='64'%20rx='14'%20fill='%236e8453'/><text%20x='32'%20y='44'%20font-size='32'%20font-family='Arial,sans-serif'%20font-weight='700'%20fill='white'%20text-anchor='middle'>R</text></svg>" />
 </head>
 <body>
 
 <div class="topbar">
-  <p>Envíos a toda España <span aria-hidden="true">·</span> Productos personalizados <span aria-hidden="true">·</span> Calidad artesanal</p>
+  <div class="topbar-in">
+    <ul class="topbar-msgs">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h11v9H2zM13 10h4l3 3v3h-7z"/><circle cx="6.5" cy="17.5" r="1.7"/><circle cx="16.5" cy="17.5" r="1.7"/></svg>Envíos a toda España</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9-9c-1.2-2.9.6-6 3.7-6 1.9 0 3.4 1 4.3 2.5.9-1.5 2.4-2.5 4.3-2.5 3.1 0 4.9 3.1 3.7 6-2 4.6-7 9-7 9z"/></svg>Productos personalizados</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Calidad artesanal</li>
+    </ul>
+    <div class="topbar-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><path d="M16.8 7.2h.01"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8h2.5V4.5H14c-2 0-3.5 1.5-3.5 3.5v2H8v3.5h2.5V20H14v-6.5h2.5L17 10h-3V8.5c0-.3.2-.5.5-.5z"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.4 2.6 2 4.2 4.5 4.5"/></svg></a>
+      <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M11 20l1.8-8M9.5 13c-1.5-3 .5-6 3-6s4 2 3.5 4.5-2.5 3.5-4 2.5"/></svg></a>
+    </div>
+  </div>
 </div>
 
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="#inicio">
-      <span class="brand-name">Nelqia</span>
-      <span class="brand-sub">atelier de bordado</span>
+      <span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 232" style="width:100%;height:auto;display:block" role="img" aria-label="Nelqia, atelier de bordado"> <g fill="none" stroke="#4E6133" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">  <!-- maquina de coser -->  <path d="M152 98h136a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H152a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z"/>  <path d="M256 98V62"/>  <path d="M282 98V50a8 8 0 0 0-8-8h-88a10 10 0 0 0-10 10v20"/>  <path d="M176 74h24v14h-24z"/>  <path d="M188 88v10"/>  <circle cx="295" cy="64" r="12"/>  <circle cx="295" cy="64" r="3.6"/>  <path d="M234 42v-8"/>  <ellipse cx="234" cy="29" rx="6.5" ry="4.6"/>  <path d="M228 31c-13 9-27 17-40 24" stroke-dasharray="0.1 5" stroke-width="2"/>  <!-- ramitas, a los lados del nombre -->  <g stroke-width="1.9">   <path d="M36 172c16 2 28-2 36-11"/>   <path d="M46 166c-3-6-2-11 1-15M58 169c-2-7 0-12 4-15M70 167c-1-7 2-11 6-13"/>   <path d="M404 172c-16 2-28-2-36-11"/>   <path d="M394 166c3-6 2-11-1-15M382 169c2-7 0-12-4-15M370 167c1-7-2-11-6-13"/>  </g> </g> <text x="220" y="176" text-anchor="middle" font-family="var(--head, 'Cormorant Garamond', Georgia, serif)" font-size="54" letter-spacing="7" fill="#2F4320">NELQIA</text> <g stroke="#89A269" stroke-width="1.1">  <path d="M74 200h52"/>  <path d="M314 200h52"/> </g> <text x="220" y="204" text-anchor="middle" font-family="var(--body, 'Karla', Helvetica, sans-serif)" font-size="12.5" letter-spacing="4.2" fill="#6E8453">ATELIER DE BORDADO</text></svg></span>
     </a>
     <nav class="nav-desktop" aria-label="Menú principal">
       <a href="#inicio">Inicio</a>
@@ -539,22 +648,17 @@ img,video{max-width:100%}
 <main>
 
   <!-- PORTADA -->
-  <section class="hero" id="inicio">
-    <span class="watermark" aria-hidden="true">puntadas</span>
-    <div class="wrap hero-grid">
+  <section class="hero hero-full" id="inicio">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap">
       <div class="hero-copy">
-        <p class="eyebrow">Atelier de bordado personalizado</p>
-        <h1>Bordados personalizados <em>con alma artesanal</em></h1>
-        <p class="lede">Cada puntada cuenta una historia.</p>
+        <h1>Bordados Personalizados <em>con alma artesanal</em></h1>
+        <div class="hero-rule" aria-hidden="true"><span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9-9c-1.2-2.9.6-6 3.7-6 1.9 0 3.4 1 4.3 2.5.9-1.5 2.4-2.5 4.3-2.5 3.1 0 4.9 3.1 3.7 6-2 4.6-7 9-7 9z"/></svg><span></span></div>
+        <p class="lede">Cada puntada cuenta una historia</p>
         <div class="hero-cta">
-          <a class="btn" href="#tienda">Descubrir la tienda</a>
-          <a class="btn-ghost" href="#personaliza">Personaliza tu pieza</a>
+          <a class="btn" href="#tienda">Descubrir Tienda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
-      <figure class="hero-media">
-        <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2.5 3.5" stroke-linecap="round"/></svg>
-        <img src="https://api.lynkia.app/shop/images/58176046-5654-4501-ac98-5718f10ef844" alt="Bastidor bordado con dos anillos y hojas, para una boda">
-      </figure>
     </div>
   </section>
 
@@ -565,29 +669,29 @@ img,video{max-width:100%}
         <span class="cat-ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.2 3.2c.3 2.4 1.7 4 3.8 4s3.5-1.6 3.8-4"/><path d="M5.6 4.3C4.2 6 3.6 8.1 4 10.4c.3 1.8.2 3.4-.3 4.9-.6 2 .6 3.6 2.3 4.5 2.9 1.5 9.1 1.5 12 0 1.7-.9 2.9-2.5 2.3-4.5-.5-1.5-.6-3.1-.3-4.9.4-2.3-.2-4.4-1.6-6.1"/><path d="M10 12.5c.6-.9 1.4-1.4 2-1.4s1.4.5 2 1.4"/></svg>
         </span>
-        <strong>Bebé</strong>
-        <small>bebé e infantil</small>
+        <strong>Baby</strong>
+        <small>Bebé e infantil</small>
       </a>
       <a class="cat reveal" href="?categoria=bolsos#tienda">
         <span class="cat-ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.8 8.2h12.4l-1.1 12.3H6.9L5.8 8.2z"/><path d="M9 8.2V6.5a3 3 0 0 1 6 0v1.7"/><path d="M10.4 12.5h3.2" stroke-dasharray="1.5 2"/></svg>
         </span>
-        <strong>Bolsos</strong>
-        <small>bolsos y accesorios</small>
+        <strong>Bags</strong>
+        <small>Bolsos y accesorios</small>
       </a>
       <a class="cat reveal" href="?categoria=detalles-boda#tienda">
         <span class="cat-ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3S5.2 15.8 3.2 11.4C2 8.8 3.6 5.9 6.2 5.9c1.8 0 3 1 3.9 2.4.9-1.4 2.1-2.4 3.9-2.4 2.6 0 4.2 2.9 3 5.5-2.1 4.4-5 8.9-5 8.9z"/><path d="M8 9.5c-.5.6-.7 1.3-.6 2" /></svg>
         </span>
-        <strong>Detalles</strong>
-        <small>regalos especiales</small>
+        <strong>Details</strong>
+        <small>Regalos especiales</small>
       </a>
       <a class="cat reveal" href="#personaliza">
         <span class="cat-ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 20.2 17.5 6.5"/><path d="M14.6 3.6c1.9-1 4.8-.9 6.2.5-.9 1.6-2.6 2.7-4.6 3.1"/><path d="M3.8 20.2c3 .6 7.2-.9 9.3-3.9"/></svg>
         </span>
         <strong>Personaliza</strong>
-        <small>diseños a tu medida</small>
+        <small>Diseños a tu medida</small>
       </a>
     </div>
   </section>
@@ -597,24 +701,24 @@ img,video{max-width:100%}
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="sec-num">N.º 01</p>
-        <h2 class="sec-title">Nuestras <em>colecciones</em></h2>
+        <h2 class="sec-title"><em>Nuestras Colecciones</em></h2>
       </div>
       <div class="col-grid">
         <a class="col-card reveal" href="?categoria=bebe#tienda">
-          <img src="https://api.lynkia.app/shop/images/51a08059-5620-47d9-b82c-2bcb98604b7a" alt="Baberos redondos de piqué bordados con el nombre del bebé" loading="lazy">
-          <span class="col-pill">Bebé e infantil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+          <img src="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-col-baby-f5b3c33c.webp" alt="Babero de lino bordado con un nombre, junto a un conejito de punto" loading="lazy">
+          <span class="col-pill">Colección Baby <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="col-card reveal" href="?categoria=bolsos#tienda">
-          <img src="https://api.lynkia.app/shop/images/b9db9bf0-ac77-4bfb-9b7f-a5b34735e370" alt="Llaveros de tela bordados con un nombre" loading="lazy">
-          <span class="col-pill">Bolsos y accesorios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+          <img src="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-col-bags-a75bb327.webp" alt="Bolso de tela con una inicial bordada y un lazo verde" loading="lazy">
+          <span class="col-pill">Colección Bags <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="col-card reveal" href="?categoria=detalles-boda#tienda">
-          <img src="https://api.lynkia.app/shop/images/ad0366cf-1f85-46d2-8c7b-05d341395808" alt="Chupeteros personalizados con nombres bordados" loading="lazy">
-          <span class="col-pill">Pequeños detalles <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+          <img src="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-col-details-30648fa0.webp" alt="Llavero redondo bordado con una inicial y una borla verde" loading="lazy">
+          <span class="col-pill">Colección Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
-        <a class="col-card reveal" href="?categoria=bano#tienda">
-          <img src="https://api.lynkia.app/shop/images/55dda6e3-8551-4362-8be6-8e009d2eb4d7" alt="Capa de baño blanca bordada con un nombre" loading="lazy">
-          <span class="col-pill">Baño y cuidado <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></span>
+        <a class="col-card reveal" href="#personaliza">
+          <img src="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-col-personaliza-257dee03.webp" alt="Bastidor con un nombre bordado y ramitas de lavanda" loading="lazy">
+          <span class="col-pill">Personaliza <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
     </div>
@@ -647,9 +751,9 @@ img,video{max-width:100%}
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="sec-num">N.º 02</p>
-        <h2 class="sec-title">Productos <em>destacados</em></h2>
+        <h2 class="sec-title"><em>Productos Destacados</em></h2>
       </div>
-      <div class="lk-items" data-lynkia-block="b73ced2ad" style="--cd:3;--ct:2;--cm:1"><div class="lk-skel"></div><div class="lk-skel"></div><div class="lk-skel"></div></div>
+      <div class="lk-items" data-lynkia-block="b73ced2ad" style="--cd:4;--ct:2;--cm:2"><div class="lk-skel"></div><div class="lk-skel"></div><div class="lk-skel"></div></div>
     </div>
   </section>
 
@@ -768,8 +872,10 @@ img,video{max-width:100%}
 
   <!-- NEWSLETTER -->
   <section class="newsletter">
+    <svg class="nl-branch nl-left" viewBox="0 0 120 200" fill="currentColor" aria-hidden="true"><path d="M60 198C58 150 62 90 70 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="42" cy="150" rx="20" ry="9" transform="rotate(-32 42 150)"/><ellipse cx="82" cy="128" rx="20" ry="9" transform="rotate(28 82 128)"/><ellipse cx="44" cy="100" rx="18" ry="8" transform="rotate(-36 44 100)"/><ellipse cx="86" cy="78" rx="18" ry="8" transform="rotate(30 86 78)"/><ellipse cx="50" cy="52" rx="15" ry="7" transform="rotate(-40 50 52)"/><ellipse cx="84" cy="32" rx="13" ry="6" transform="rotate(34 84 32)"/></svg><svg class="nl-branch nl-right" viewBox="0 0 120 200" fill="currentColor" aria-hidden="true"><path d="M60 198C58 150 62 90 70 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="42" cy="150" rx="20" ry="9" transform="rotate(-32 42 150)"/><ellipse cx="82" cy="128" rx="20" ry="9" transform="rotate(28 82 128)"/><ellipse cx="44" cy="100" rx="18" ry="8" transform="rotate(-36 44 100)"/><ellipse cx="86" cy="78" rx="18" ry="8" transform="rotate(30 86 78)"/><ellipse cx="50" cy="52" rx="15" ry="7" transform="rotate(-40 50 52)"/><ellipse cx="84" cy="32" rx="13" ry="6" transform="rotate(34 84 32)"/></svg>
     <div class="wrap newsletter-inner reveal">
-      <div data-lynkia-newsletter data-title="Únete a Nelqia" data-text="Recibe de vez en cuando las novedades del atelier: nuevas piezas, colecciones e ideas para regalar." data-button="Quiero suscribirme" data-consent="Acepto recibir emails de Nelqia"></div>
+      <svg class="nl-machine" viewBox="130 14 190 112" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M152 98h136a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H152a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z"/><path d="M256 98V62"/><path d="M282 98V50a8 8 0 0 0-8-8h-88a10 10 0 0 0-10 10v20"/><path d="M176 74h24v14h-24z"/><path d="M188 88v10"/><circle cx="295" cy="64" r="12"/><circle cx="295" cy="64" r="3.6"/><path d="M234 42v-8"/><ellipse cx="234" cy="29" rx="6.5" ry="4.6"/><path d="M228 31c-13 9-27 17-40 24" stroke-dasharray="0.1 5" stroke-width="2"/></svg>
+      <div data-lynkia-newsletter data-title="Únete a NELQIA" data-text="Recibe novedades, ideas y ofertas exclusivas." data-button="Suscribirme" data-consent="Acepto recibir emails de Nelqia"></div>
     </div>
   </section>
 
@@ -778,8 +884,7 @@ img,video{max-width:100%}
 <footer class="footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <span class="brand-name">Nelqia</span>
-      <span class="brand-sub">atelier de bordado</span>
+      <span class="brand-mark brand-mark-light"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 232" style="width:100%;height:auto;display:block" role="img" aria-label="Nelqia, atelier de bordado"> <g fill="none" stroke="#4E6133" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">  <!-- maquina de coser -->  <path d="M152 98h136a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H152a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z"/>  <path d="M256 98V62"/>  <path d="M282 98V50a8 8 0 0 0-8-8h-88a10 10 0 0 0-10 10v20"/>  <path d="M176 74h24v14h-24z"/>  <path d="M188 88v10"/>  <circle cx="295" cy="64" r="12"/>  <circle cx="295" cy="64" r="3.6"/>  <path d="M234 42v-8"/>  <ellipse cx="234" cy="29" rx="6.5" ry="4.6"/>  <path d="M228 31c-13 9-27 17-40 24" stroke-dasharray="0.1 5" stroke-width="2"/>  <!-- ramitas, a los lados del nombre -->  <g stroke-width="1.9">   <path d="M36 172c16 2 28-2 36-11"/>   <path d="M46 166c-3-6-2-11 1-15M58 169c-2-7 0-12 4-15M70 167c-1-7 2-11 6-13"/>   <path d="M404 172c-16 2-28-2-36-11"/>   <path d="M394 166c3-6 2-11-1-15M382 169c2-7 0-12-4-15M370 167c1-7-2-11-6-13"/>  </g> </g> <text x="220" y="176" text-anchor="middle" font-family="var(--head, 'Cormorant Garamond', Georgia, serif)" font-size="54" letter-spacing="7" fill="#2F4320">NELQIA</text> <g stroke="#89A269" stroke-width="1.1">  <path d="M74 200h52"/>  <path d="M314 200h52"/> </g> <text x="220" y="204" text-anchor="middle" font-family="var(--body, 'Karla', Helvetica, sans-serif)" font-size="12.5" letter-spacing="4.2" fill="#6E8453">ATELIER DE BORDADO</text></svg></span>
       <p>Bordados personalizados, hechos a mano y a máquina, con envíos a toda España.</p>
     </div>
     <nav class="footer-nav" aria-label="Menú del pie de página">
