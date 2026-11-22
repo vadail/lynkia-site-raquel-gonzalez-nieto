@@ -616,6 +616,53 @@ img,video{max-width:100%}
 
 /* La cabecera fija necesita que <body> no sea un contenedor de scroll: clip corta el desborde lateral sin serlo. */
 body{overflow-x:clip}
+
+/* === Franja de garantias y newsletter como en el diseño original (23-11-2026) === */
+.garantias{background:#eeeedd;border:0;padding-block:clamp(22px,2.6vw,34px)}
+.gar-grid{grid-template-columns:repeat(2,1fr);gap:1.4rem 0;align-items:center}
+.gar{align-items:center;justify-content:center;gap:1.1rem;padding-inline:.8rem}
+.gar-ico{width:auto;height:auto;border:0;border-radius:0;background:none;color:#4e6133}
+.gar-ico svg{width:46px;height:46px}
+.gar p{margin:0;font-family:var(--head);font-size:1.06rem;line-height:1.3;color:#2d3226}
+.gar p strong,.gar p span{display:block;font-family:inherit;font-size:inherit;margin:0}
+.gar p strong{font-weight:500}
+@media(min-width:900px){.gar-grid{grid-template-columns:repeat(4,1fr)}.gar+.gar{border-left:1px solid rgba(78,97,51,.28)}}
+@media(max-width:560px){.gar{justify-content:flex-start}.gar-ico svg{width:38px;height:38px}.gar p{font-size:.98rem}}
+
+.newsletter{background:linear-gradient(180deg,#dcdec9,#d6d8c2);border:0;padding-block:clamp(26px,3vw,40px)}
+.newsletter::before,.newsletter::after{content:"";position:absolute;top:0;bottom:0;width:clamp(90px,10vw,150px);background-size:cover;background-repeat:no-repeat;pointer-events:none}
+.newsletter::before{left:0;background-image:url("https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-hojas-izq-b1d5537b.webp");background-position:left center;-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent);mask-image:linear-gradient(90deg,#000 55%,transparent)}
+.newsletter::after{right:0;background-image:url("https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-hojas-der-021bf8fb.webp");background-position:right center;-webkit-mask-image:linear-gradient(270deg,#000 55%,transparent);mask-image:linear-gradient(270deg,#000 55%,transparent)}
+.nl-branch,.nl-machine{display:none}
+.newsletter-inner{max-width:1240px;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.2rem,3vw,2.6rem);padding-inline:clamp(110px,11vw,170px)}
+.nl-art{width:clamp(190px,22vw,300px);height:auto;display:block}
+.newsletter .lk-nl{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:.2rem clamp(1.2rem,3vw,2.4rem)}
+.newsletter .lk-nl-title{font-size:clamp(1.7rem,2.6vw,2.3rem);font-style:italic;font-weight:400;color:#2f4320;align-self:end}
+.newsletter .lk-nl-text{font-family:var(--head);font-size:1.02rem;color:#2d3226;align-self:start;opacity:1}
+.newsletter .lk-nl-row{flex-wrap:nowrap;gap:12px}
+.newsletter .lk-nl-input{flex:1 1 auto;border-radius:12px;padding:.85rem 1rem .85rem 2.9rem;font-family:var(--head);background:#fffaf0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234e6133' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5.5' width='18' height='13' rx='2'/%3E%3Cpath d='M3.5 7l8.5 6.5L20.5 7'/%3E%3C/svg%3E") no-repeat 14px center/22px}
+.newsletter .lk-nl-btn{flex:0 0 auto;border-radius:12px;font-size:1.06rem;padding:.85rem 1.7rem;white-space:nowrap}
+.newsletter .lk-nl-consent{margin-top:.6rem;font-size:.8rem;color:#4a5340}
+@media(max-width:980px){
+  .newsletter-inner{grid-template-columns:1fr;justify-items:center;text-align:center;padding-inline:clamp(24px,6vw,60px)}
+  .newsletter .lk-nl{display:block;text-align:center;width:100%;max-width:520px}
+  .newsletter .lk-nl-form{margin-top:1rem}
+  .newsletter::before,.newsletter::after{opacity:.45;width:84px}
+}
+@media(max-width:520px){.newsletter .lk-nl-row{flex-wrap:wrap}.newsletter .lk-nl-btn{flex:1 1 100%}}
+
+@media(min-width:981px){
+  .newsletter-inner{padding-inline:clamp(100px,9vw,136px);gap:clamp(1.2rem,2.4vw,2.2rem)}
+  .nl-art{width:clamp(170px,16vw,236px)}
+  .newsletter .lk-nl{grid-template-columns:auto minmax(330px,1fr);gap:.15rem clamp(1.2rem,2.4vw,2.2rem)}
+  .newsletter .lk-nl-title{white-space:nowrap;font-size:clamp(1.55rem,2.2vw,2.05rem)}
+  .newsletter .lk-nl-text{white-space:nowrap;font-size:.98rem}
+  .newsletter .lk-nl-input{min-width:170px}
+  .newsletter .lk-nl-btn{padding-inline:1.3rem}
+}
+
+/* En pantallas estrechas la franja es alta y las hojas se deformaban: fuera. */
+@media(max-width:980px){.newsletter::before,.newsletter::after{display:none}}
 </style>
   <link rel="icon" type="image/svg+xml" href="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-favicon-bd3b2b98.svg">
 </head>
@@ -747,22 +794,10 @@ body{overflow-x:clip}
   <!-- GARANTÍAS -->
   <section class="garantias" aria-label="Nuestras garantías">
     <div class="wrap gar-grid">
-      <div class="gar reveal">
-        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3S5.2 15.8 3.2 11.4C2 8.8 3.6 5.9 6.2 5.9c1.8 0 3 1 3.9 2.4.9-1.4 2.1-2.4 3.9-2.4 2.6 0 4.2 2.9 3 5.5-2.1 4.4-5 8.9-5 8.9z"/><path d="M7.6 12.8l1.4 1.4 2.6-2.8" /></svg></span>
-        <div><strong>Artesanal y único</strong><p>No hay dos piezas iguales.</p></div>
-      </div>
-      <div class="gar reveal">
-        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.1-4L15.8 5.3a2.1 2.1 0 0 1 3 0l0 0a2.1 2.1 0 0 1 0 3L8 19 4 20z"/><path d="M13.8 7.3l3 3"/></svg></span>
-        <div><strong>Diseños personalizados</strong><p>Tu nombre, tu inicial o tu idea.</p></div>
-      </div>
-      <div class="gar reveal">
-        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 9.5 11 4.2 20 4c0 9-5.5 15-15 15z"/><path d="M5 19c3-5.5 7-9.6 11.5-11.5"/></svg></span>
-        <div><strong>Materiales de alta calidad</strong><p>Telas escogidas y acabados cuidados.</p></div>
-      </div>
-      <div class="gar reveal">
-        <span class="gar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5h10.5v9.5H2.5z"/><path d="M13 10h4.2l3 3v3H13"/><circle cx="6.5" cy="17.8" r="1.7"/><circle cx="17" cy="17.8" r="1.7"/></svg></span>
-        <div><strong>Envíos a toda España</strong><p>Tu pedido llega a cualquier rincón.</p></div>
-      </div>
+      <div class="gar"><span class="gar-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 41V23"/><path d="M24 27c-8.5 0-13.5-4.2-14.5-12.5 8.5 0 13.5 4.2 14.5 12.5z"/><path d="M24 23c0-7.5 4.2-11.5 12.5-12.5 0 7.5-4.2 11.5-12.5 12.5z"/></svg></span><p><strong>Artesanal</strong><span>y único</span></p></div>
+      <div class="gar"><span class="gar-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 16h30l3 22H6z"/><path d="M9 16c2.5 5 27.5 5 30 0"/><path d="M17 16v-3a2 2 0 0 1 4 0v3M27 16v-3a2 2 0 0 1 4 0v3"/><path d="M20.5 28c1.5 2.2 5.5 2.2 7 0"/></svg></span><p><strong>Diseños</strong><span>personalizados</span></p></div>
+      <div class="gar"><span class="gar-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 19l7-9h18l7 9-16 20z"/><path d="M8 19h32"/><path d="M15 10l4 9 5 20 5-20 4-9"/><path d="M19 19l5-9 5 9"/></svg></span><p><strong>Materiales</strong><span>de alta calidad</span></p></div>
+      <div class="gar"><span class="gar-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13h22v20H5z"/><path d="M27 19h8l6 7v7H27z"/><circle cx="13" cy="35" r="3.4"/><circle cx="33" cy="35" r="3.4"/><path d="M9 19h6M9 24h4"/></svg></span><p><strong>Envíos a</strong><span>toda España</span></p></div>
     </div>
   </section>
 
@@ -894,7 +929,7 @@ body{overflow-x:clip}
   <section class="newsletter">
     <svg class="nl-branch nl-left" viewBox="0 0 120 200" fill="currentColor" aria-hidden="true"><path d="M60 198C58 150 62 90 70 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="42" cy="150" rx="20" ry="9" transform="rotate(-32 42 150)"/><ellipse cx="82" cy="128" rx="20" ry="9" transform="rotate(28 82 128)"/><ellipse cx="44" cy="100" rx="18" ry="8" transform="rotate(-36 44 100)"/><ellipse cx="86" cy="78" rx="18" ry="8" transform="rotate(30 86 78)"/><ellipse cx="50" cy="52" rx="15" ry="7" transform="rotate(-40 50 52)"/><ellipse cx="84" cy="32" rx="13" ry="6" transform="rotate(34 84 32)"/></svg><svg class="nl-branch nl-right" viewBox="0 0 120 200" fill="currentColor" aria-hidden="true"><path d="M60 198C58 150 62 90 70 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="42" cy="150" rx="20" ry="9" transform="rotate(-32 42 150)"/><ellipse cx="82" cy="128" rx="20" ry="9" transform="rotate(28 82 128)"/><ellipse cx="44" cy="100" rx="18" ry="8" transform="rotate(-36 44 100)"/><ellipse cx="86" cy="78" rx="18" ry="8" transform="rotate(30 86 78)"/><ellipse cx="50" cy="52" rx="15" ry="7" transform="rotate(-40 50 52)"/><ellipse cx="84" cy="32" rx="13" ry="6" transform="rotate(34 84 32)"/></svg>
     <div class="wrap newsletter-inner reveal">
-      <svg class="nl-machine" viewBox="130 14 190 112" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M152 98h136a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H152a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z"/><path d="M256 98V62"/><path d="M282 98V50a8 8 0 0 0-8-8h-88a10 10 0 0 0-10 10v20"/><path d="M176 74h24v14h-24z"/><path d="M188 88v10"/><circle cx="295" cy="64" r="12"/><circle cx="295" cy="64" r="3.6"/><path d="M234 42v-8"/><ellipse cx="234" cy="29" rx="6.5" ry="4.6"/><path d="M228 31c-13 9-27 17-40 24" stroke-dasharray="0.1 5" stroke-width="2"/></svg>
+      <img class="nl-art" src="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-nl-maquina-59750e5e.webp" alt="" width="343" height="135" loading="lazy">
       <div data-lynkia-newsletter data-title="Únete a NELQIA" data-text="Recibe novedades, ideas y ofertas exclusivas." data-button="Suscribirme" data-consent="Acepto recibir emails de Nelqia"></div>
     </div>
   </section>
