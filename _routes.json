@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/",
+    "/index.html",
+    "/assets/*",
+    "/images/*",
+    "/img/*",
+    "/fonts/*",
+    "/static/*",
+    "/style.css",
+    "/favicon.ico",
+    "/favicon.png",
+    "/favicon.svg",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/_headers",
+    "/lynkia-site.js",
+    "/lynkia-stats.js"
+  ]
+}
