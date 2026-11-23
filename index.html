@@ -663,6 +663,11 @@ body{overflow-x:clip}
 
 /* En pantallas estrechas la franja es alta y las hojas se deformaban: fuera. */
 @media(max-width:980px){.newsletter::before,.newsletter::after{display:none}}
+
+/* El logo de la marca en el pie: sus letras son verde oscuro, asi que va sobre una placa crema para que se lea. */
+.brand-plate{display:inline-block;background:#fcf7f1;border-radius:18px;padding:14px 26px;margin-bottom:1.1rem;box-shadow:0 14px 30px -20px rgba(0,0,0,.6)}
+.brand-plate img{display:block;height:112px;width:auto}
+@media(max-width:640px){.brand-plate img{height:92px}}
 </style>
   <link rel="icon" type="image/svg+xml" href="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-favicon-bd3b2b98.svg">
 </head>
@@ -939,7 +944,7 @@ body{overflow-x:clip}
 <footer class="footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <span class="brand-mark brand-mark-light"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 232" style="width:100%;height:auto;display:block" role="img" aria-label="Nelqia, atelier de bordado"> <g fill="none" stroke="#4E6133" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">  <!-- maquina de coser -->  <path d="M152 98h136a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H152a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z"/>  <path d="M256 98V62"/>  <path d="M282 98V50a8 8 0 0 0-8-8h-88a10 10 0 0 0-10 10v20"/>  <path d="M176 74h24v14h-24z"/>  <path d="M188 88v10"/>  <circle cx="295" cy="64" r="12"/>  <circle cx="295" cy="64" r="3.6"/>  <path d="M234 42v-8"/>  <ellipse cx="234" cy="29" rx="6.5" ry="4.6"/>  <path d="M228 31c-13 9-27 17-40 24" stroke-dasharray="0.1 5" stroke-width="2"/>  <!-- ramitas, a los lados del nombre -->  <g stroke-width="1.9">   <path d="M36 172c16 2 28-2 36-11"/>   <path d="M46 166c-3-6-2-11 1-15M58 169c-2-7 0-12 4-15M70 167c-1-7 2-11 6-13"/>   <path d="M404 172c-16 2-28-2-36-11"/>   <path d="M394 166c3-6 2-11-1-15M382 169c2-7 0-12-4-15M370 167c1-7-2-11-6-13"/>  </g> </g> <text x="220" y="176" text-anchor="middle" font-family="var(--head, 'Cormorant Garamond', Georgia, serif)" font-size="54" letter-spacing="7" fill="#2F4320">NELQIA</text> <g stroke="#89A269" stroke-width="1.1">  <path d="M74 200h52"/>  <path d="M314 200h52"/> </g> <text x="220" y="204" text-anchor="middle" font-family="var(--body, 'Karla', Helvetica, sans-serif)" font-size="12.5" letter-spacing="4.2" fill="#6E8453">ATELIER DE BORDADO</text></svg></span>
+      <span class="brand-plate"><img src="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-logo-c5b6ed61.webp" alt="Nelqia, atelier de bordado" width="719" height="568" loading="lazy"></span>
       <p>Bordados personalizados, hechos a mano y a máquina, con envíos a toda España.</p>
     </div>
     <nav class="footer-nav" aria-label="Menú del pie de página">
