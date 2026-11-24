@@ -107,7 +107,13 @@
     }
   }
 
-  function card(item, block, data, featured) {
+  // Un producto se abre sabiendo de que categoria se viene (24-11-2026): su pagina ofrece volver justo ahi.
+  function withCategory(item, slug) {
+    if (!slug || item.kind !== "product") return item.url;
+    return item.url + (item.url.indexOf("?") < 0 ? "?" : "&") + "categoria=" + encodeURIComponent(slug);
+  }
+
+  function card(item, block, data, featured, slug) {
     var media =
       '<div class="lk-card-media">' +
       photos(item, data) +
@@ -131,7 +137,7 @@
       (block.show.button && !item.sold_out ? '<span class="lk-btn">' + esc(block.button_label) + "</span>" : "") +
       "</span></div>";
     var target = preview ? ' target="_blank" rel="noopener"' : "";
-    return '<a class="lk-card' + (featured ? " lk-featured" : "") + '" href="' + esc(item.url) + '"' + target + ">" + media + body + "</a>";
+    return '<a class="lk-card' + (featured ? " lk-featured" : "") + '" href="' + esc(withCategory(item, slug)) + '"' + target + ">" + media + body + "</a>";
   }
 
   // Botones de categoria encima de las tarjetas (13-11-2026): filtran en la propia pagina, sin pedir nada. `?categoria=lanas`
@@ -139,6 +145,33 @@
   function wantedSlug() {
     var m = /[?&]categoria=([^&#]+)/.exec(window.location.search);
     return m ? decodeURIComponent(m[1]) : "";
+  }
+
+  // La elegida queda en la direccion (24-11-2026): el boton «atras» del navegador vuelve a ella y no a «Todo».
+  function remember(slug) {
+    if (preview) return;
+    try {
+      var url = new URL(window.location.href);
+      if (slug) url.searchParams.set("categoria", slug);
+      else url.searchParams.delete("categoria");
+      window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+    } catch (e) {
+      // un navegador sin URL o un marco que no deja: se filtra igual
+    }
+  }
+
+  // Quien vuelve a la tienda (`?categoria=`, tambien vacia) cae en ella y no en la portada. Con un ancla ya lo hace el navegador, y al
+  // volver con «atras» se respeta donde estaba.
+  var landed = false;
+  function land(slot) {
+    if (landed || preview || window.location.hash || !/[?&]categoria=/.test(window.location.search) || window.scrollY > 40) return;
+    landed = true;
+    var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType("navigation")[0] : null;
+    if (nav && nav.type === "back_forward") return;
+    var bar = slot.previousElementSibling;
+    var target = bar && bar.classList && bar.classList.contains("lk-filters") ? bar : slot;
+    var top = target.getBoundingClientRect().top + window.scrollY - 130;
+    window.scrollTo(0, Math.max(0, top));
   }
 
   function paint(slot, block, data, active) {
@@ -150,8 +183,9 @@
       for (var k = 0; k < own.length; k++) if (ids.indexOf(own[k]) >= 0) return true;
       return false;
     }
-    var html = block.featured && inside(block.featured) ? card(block.featured, block, data, true) : "";
-    for (var j = 0; j < block.items.length; j++) if (inside(block.items[j])) html += card(block.items[j], block, data, false);
+    var slug = chip ? chip.slug : "";
+    var html = block.featured && inside(block.featured) ? card(block.featured, block, data, true, slug) : "";
+    for (var j = 0; j < block.items.length; j++) if (inside(block.items[j])) html += card(block.items[j], block, data, false, slug);
     slot.innerHTML = html || '<p class="lk-empty">' + esc(block.empty || data.texts.empty) + "</p>";
     wireSlides(slot);
   }
@@ -232,6 +266,8 @@
       var target = e.target && e.target.closest ? e.target.closest("[data-cat]") : null;
       if (!target) return;
       active = target.getAttribute("data-cat") || "";
+      var picked = block.filters.filter(function (f) { return f.id === active; })[0];
+      remember(picked ? picked.slug : "");
       draw();
       paint(slot, block, data, active);
     };
@@ -256,6 +292,7 @@
       }
       var active = block.filters && block.filters.length > 1 ? filters(slot, block, data) : "";
       paint(slot, block, data, active);
+      if (block.type === "shop") land(slot);
     }
   }
 
