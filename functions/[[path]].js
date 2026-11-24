@@ -4,7 +4,7 @@
 // Todo lo demas sigue con `context.next()`: la web del creador se sirve como siempre.
 const APP = "https://lynkia.app";
 const API = "https://api.lynkia.app";
-const HANDLE = "raquel-gonzalez-nieto";
+const HANDLE = "nelquia";
 const PREFIXES = ["/access", "/pedido", "/survey", "/live", "/app-assets", "/lib", "/terms", "/privacy"];
 const VERSION = "2";
 // Direcciones de la raiz que nunca son de un curso (las de la app y las propias de esta funcion).
