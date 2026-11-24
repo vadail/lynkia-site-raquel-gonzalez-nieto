@@ -689,7 +689,10 @@ body{overflow-x:clip}
   .steps{grid-template-columns:repeat(3,1fr)}
   .steps::before{content:"";position:absolute;z-index:0;top:58px;left:16.666%;right:16.666%;border-top:2px dashed #cdbd8f}
 }
-@media(max-width:819px){.steps{grid-template-columns:1fr}.step-ico{width:100px;height:100px}}</style>
+@media(max-width:819px){.steps{grid-template-columns:1fr}.step-ico{width:100px;height:100px}}
+/* Las hojas, sin el borde oscuro de su recorte. */
+.newsletter::before{left:-16px;top:-6px;bottom:-16px}.newsletter::after{right:-16px;top:-6px;bottom:-16px}
+</style>
   <link rel="icon" type="image/svg+xml" href="https://raquel-gonzalez-nieto.lynkia.app/assets/nelqia-favicon-bd3b2b98.svg">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nelquia · Atelier de bordado personalizado">
